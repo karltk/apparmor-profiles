@@ -1,0 +1,57 @@
+# Last Modified: Mon Oct 21 16:52:29 2013
+#include <tunables/global>
+
+/usr/bin/skype {
+  #include <abstractions/X>
+  #include <abstractions/audio>
+  #include <abstractions/base>
+  #include <abstractions/fonts>
+  #include <abstractions/freedesktop.org>
+  #include <abstractions/kde>
+  #include <abstractions/nameservice>
+  #include <abstractions/ssl_certs>
+  #include <abstractions/user-tmp>
+
+
+  deny /etc/passwd r,
+  deny /home/*/.mozilla/** r,
+  deny /home/*/.kde/share/config/kioslaverc r,
+  deny /home/*/.mozilla/ r,
+  deny @{PROC}/*/auxv r,
+  deny @{PROC}/*/cmdline r,
+  deny /sys/devices/system/cpu/ r,
+  deny @{PROC}/[0-9]*/fd/ r,
+  deny @{PROC}/[0-9]*/task/ r,
+  deny @{PROC}/[0-9]*/task/** r,
+
+  /dev/ r,
+  /dev/pts/* rw,
+  /dev/shm/ r,
+  /dev/shm/pulse-shm-* mrw,
+  /dev/snd/* mrw,
+  /dev/tty rw,
+  /dev/video* mrw,
+  /etc/pulse/client.conf r,
+  /etc/xdg/Trolltech.conf rk,
+  /home/*/.Skype/ rw,
+  /home/*/.Skype/** rwk,
+  /home/*/.config/Skype/Skype.conf rwk,
+  /opt/skype/** mrk,
+  /opt/skype/skype pix,
+  /sys/devices/system/cpu/cpu0/cpufreq/* r,
+  /usr/bin/skype mr,
+  /usr/lib/**/*.so mr,
+  /usr/share/fonts/** mr,
+  /usr/share/glib-2.0/schemas/gschemas.compiled mr,
+  /usr/share/locale-langpack/* mr,
+  /usr/share/skype/** mrk,
+  /usr/share/skype/sounds/*.wav rk,
+  /usr/share/themes/** r,
+  /var/lib/dbus/machine-id r,
+  @{HOME}/Downloads/ rwk,
+  @{HOME}/Downloads/* rwk,
+  @{PROC}/*/net/arp r,
+  @{PROC}/sys/kernel/osrelease r,
+  @{PROC}/sys/kernel/ostype r,
+
+}
