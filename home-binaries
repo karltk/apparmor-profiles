@@ -1,0 +1,31 @@
+# Last Modified: Sun Oct 13 23:20:57 2013
+#include <tunables/global>
+
+/home/*/apps/* {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/private-files-strict>
+  #include <abstractions/ubuntu-browsers.d/java>
+
+  deny /home/*/.* rwk,
+
+  /usr/bin/* rix,
+  /home/** rwk,
+  /dev/random rw,
+  /etc/fonts/** r,
+  /etc/timezone r,
+  /home/*/apps/** mrwk,
+  /proc/*/coredump_filter rw,
+  /proc/*/maps r,
+  /proc/*/net/if_inet6 r,
+  /proc/*/net/ipv6_route r,
+  /proc/filesystems r,
+  /proc/meminfo r,
+  /sys/devices/system/cpu/ r,
+  /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java rix,
+  /tmp/** rw,
+  /usr/lib{,32,64}/** mr,
+  /usr/share/** r,
+  /var/cache/fontconfig/* r,
+  /var/lib/dbus/machine-id r,
+}

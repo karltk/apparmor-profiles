@@ -1,0 +1,36 @@
+# Last Modified: Sun Oct 13 23:46:27 2013
+#include <tunables/global>
+
+/home/karltk/apps/eclipse-4.2/eclipse {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/ubuntu-browsers.d/java>
+
+  /anon_hugepage//deleted r,
+  /dev/random rw,
+  /etc/fonts/** r,
+  /etc/timezone r,
+  /home/*/.Xauthority r,
+  /home/*/.cache/dconf/user rw,
+  /home/*/.config/dconf/user r,
+  /home/*/.fontconfig/* r,
+  /home/*/.java/** r,
+  /home/*/.kfx/** r,
+  /home/*/.local/share/** r,
+  /home/*/apps/** mrwk,
+  /home/*/work/** rwk,
+  /proc/*/coredump_filter rw,
+  /proc/*/maps r,
+  /proc/*/net/if_inet6 r,
+  /proc/*/net/ipv6_route r,
+  /proc/filesystems r,
+  /proc/meminfo r,
+  /sys/devices/system/cpu/ r,
+  /tmp/** rw,
+  /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java rix,
+  /usr/lib{,32,64}/** mr,
+  /usr/share/** r,
+  /var/cache/fontconfig/* r,
+  /var/lib/dbus/machine-id r,
+
+}
