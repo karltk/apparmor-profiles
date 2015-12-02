@@ -1,4 +1,5 @@
-# Last Modified: Mon Oct 21 16:52:29 2013
+# Spotify 1.0.19 + Ubuntu 15.10
+
 #include <tunables/global>
 
 /opt/spotify/spotify-client/spotify {
