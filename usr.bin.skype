@@ -1,6 +1,7 @@
 # Skype 4.3.x + Ubuntu 15.10
 
 #include <tunables/global>
+
 /usr/bin/skype {
   #include <abstractions/base>
   #include <abstractions/user-tmp>
@@ -22,8 +23,8 @@
   audit deny @{PROC}/*/auxv r,
   audit deny @{PROC}/*/cmdline r,
   audit deny @{PROC}/[0-9]*/fd/ r,
-  audit deny @{PROC}/[0-9]*/task/ r,
-  audit deny @{PROC}/[0-9]*/task/** r,
+  deny @{PROC}/[0-9]*/task/ r,
+  deny @{PROC}/[0-9]*/task/** r,
   audit deny @{PROC}/[0-9]*/fd/ r,
   audit deny /var/cache/fontconfig/ w,
   audit deny /sys/devices/** r,
@@ -35,9 +36,9 @@
   /opt/skype/skype pix,
   /opt/skype/** kmr,
   /usr/share/fonts/** m,
-  @{PROC}/*/net/arp r,
-  @{PROC}/*/cmdline r,
-  @{PROC}/*/auxv r,
+  owner @{PROC}/*/net/arp r,
+  owner @{PROC}/*/cmdline r,
+  owner @{PROC}/*/auxv r,
   @{PROC}/sys/kernel/ostype r,
   @{PROC}/sys/kernel/osrelease r,
   /usr/bin/xdg-open rUxmlk,
@@ -49,28 +50,28 @@
   /etc/pulse/client.conf r,
   /dev/pts/* rw,
   /dev/video* mrw,
-  @{HOME}/.cache/fontconfig/** lkmrw,
-  @{HOME}/Downloads/* krw,
-  @{HOME}/Downloads/ krw,
+  owner @{HOME}/.cache/fontconfig/** lkmrw,
+  owner @{HOME}/Downloads/* krw,
+  owner @{HOME}/Downloads/ krw,
   /etc/xdg/Trolltech.conf rk,
-  @{HOME}/.config/Trolltech.conf* rwk,
+  owner @{HOME}/.config/Trolltech.conf* rwk,
   /etc/xdg/sni-qt.conf r,
   /usr/share/locale-langpack/* mr,
   /usr/share/glib-2.0/schemas/gschemas.compiled rm,
   /usr/share/nvidia-331/** rm,
   /sys/devices/system/cpu/ r,
   /sys/devices/system/cpu/cpu0/cpufreq/* r,
-  @{HOME}/.Skype/ krw,
-  @{HOME}/.Skype/** krw,
-  @{HOME}/.config/Skype/ krw,
-  @{HOME}/.config/Skype/** krw,
+  owner @{HOME}/.Skype/ krw,
+  owner @{HOME}/.Skype/** krw,
+  owner @{HOME}/.config/Skype/ krw,
+  owner @{HOME}/.config/Skype/** krw,
   /usr/share/skype/** kmr,
   /usr/share/skype/sounds/*.wav kr,
   /usr/share/icons/** kr,
   /sys/class/power_supply/ r,
 
-  @{PROC}/[0-9]*/status r,
-  @{PROC}/[0-9]*/net/** r,
+  owner @{PROC}/[0-9]*/status r,
+  owner @{PROC}/[0-9]*/net/** r,
 
   /usr/bin/pavucontrol rmUx,
 
