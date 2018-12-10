@@ -1,0 +1,32 @@
+# Ubuntu 18.10 + Spotify 1.0.89.313.g34a58dea
+# 2018-12-10
+
+#include <tunables/global>
+
+/usr/share/spotify/spotify {
+  #include <abstractions/base>
+  #include <abstractions/audio>
+  #include <abstractions/base>
+  #include <abstractions/dbus-strict>
+  #include <abstractions/ibus>
+  #include <abstractions/lightdm>
+  #include <abstractions/gnome>
+  #include <abstractions/dconf>
+  #include <abstractions/nameservice>
+
+  capability sys_ptrace,
+  capability mknod,
+
+  /lib/x86_64-linux-gnu/ld-*.so mr,
+  /usr/share/spotify/libcef.so mr,
+  /usr/share/spotify/spotify mr,
+
+  owner /home/*/.cache/spotify/** rwk,
+  owner /home/*/.cache/mesa_shader_cache/** rw,
+  owner /home/*/.config/spotify/** rw,
+  owner /home/*/.local/share/glib-2.0/** r,
+  owner /home/*/.pki/nssdb/** rwk,
+  owner /proc/*/oom_score_adj rw,
+  
+  /proc/sys/kernel/yama/ptrace_scope r,
+}
